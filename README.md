@@ -7,13 +7,37 @@ Welcome to the **Faraday-Web-Researcher-Agent** repository! This project aims to
 
 ## Table of Contents
 
-1. [Features](#features)
-2. [Technologies Used](#technologies-used)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [License](#license)
-7. [Contact](#contact)
+1. [Quick Start](#quick-start)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Installation](#installation)
+5. [Configuration](#configuration)
+6. [Usage](#usage)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Contact](#contact)
+
+## Quick Start
+
+Get Faraday running in under 5 minutes:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/DennisDRX/Faraday-Web-Researcher-Agent.git
+cd Faraday-Web-Researcher-Agent
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Set up your API keys (copy the example and edit)
+cp .env.example .env
+# Edit .env with your API keys (see Configuration section below)
+
+# 4. Run the application
+streamlit run app.py
+```
+
+Open your browser to `http://localhost:8501` and start researching!
 
 ## Features
 
@@ -67,6 +91,42 @@ To set up Faraday on your local machine, follow these steps:
    ```
 
 You can also check the [Releases](https://github.com/DennisDRX/Faraday-Web-Researcher-Agent/releases) section for downloadable files and instructions.
+
+## Configuration
+
+Faraday requires API keys to function. Copy the example environment file and configure your keys:
+
+```bash
+cp .env.example .env
+```
+
+### Required: LLM Provider
+
+You need at least **one** LLM provider configured:
+
+| Provider | Environment Variables | Notes |
+|----------|----------------------|-------|
+| **Google Gemini** (Recommended) | `GEMINI_API_KEY`, `GEMINI_MODEL` | Free tier available at [Google AI Studio](https://aistudio.google.com/apikey) |
+| Azure OpenAI | `AZURE_OPENAI_API_KEY_O3_mini`, `AZURE_OPENAI_ENDPOINT_O3_mini`, etc. | Enterprise option |
+
+**Quickest setup:** Get a free Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey) and add to your `.env`:
+
+```bash
+GEMINI_API_KEY=your_key_here
+GEMINI_MODEL=gemini-2.5-flash-preview-04-17
+```
+
+### Optional: Search Tools
+
+Enhance research capabilities with additional APIs:
+
+| Tool | Environment Variable | Get API Key |
+|------|---------------------|-------------|
+| Tavily Search | `TAVILY_API_KEY2` | [tavily.com](https://tavily.com) |
+| NewsAPI | `NEWS_API_KEY` | [newsapi.org](https://newsapi.org) |
+| Firecrawl | `FIRECRAWL_API_KEY` | [firecrawl.dev](https://firecrawl.dev) |
+
+> **Note:** DuckDuckGo and Wikidata search work without API keys.
 
 ## Usage
 
